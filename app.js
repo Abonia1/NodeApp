@@ -48,19 +48,40 @@ fs.readdir('./',function(err,files){
 });*/
 
 
-/*EVENT MODULE*/
+/*EVENT MODULE
 // class eventemitter
 const EventEmitter=require('events');
 //object emitter
 const emitter=new EventEmitter();
 
-//register the listener
-emitter.on('messageLogged',function(){
-    console.log('listener called');
+//register the listener-listener is a function which is called when the event is raised
+emitter.on('messageLogged',function(arg){
+    console.log('listener called',arg);
+});
+
+//with arrow function
+emitter.on('messageLogged',(arg)=>{
+    console.log('listener called',arg);
 });
 
 //signaling/raise an event
-emitter.emit('messageLogged');
+//emitter.emit('messageLogged',{id:1,url:'http://'});
 
-//listener is a function which is called when the event is raised
+const logger=require('./logger');
+logger('messages');*/
+
+
+/*EXTEND EVENTEMITTER*/
+
+const EventEmitter=require('events');
+
+const Logger=require('./logger');
+const logger=new Logger();
+
+//Register a listener
+logger.on('messageLogged',(arg)=>{
+    console.log('listener called',arg);
+});
+
+logger.log('message');
 
