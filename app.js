@@ -14,9 +14,12 @@
 const logger=require('./logger');
 logger('messages');*/
 
-/*working with path */
+/*working with path 
+const path=require('path');
+var pathObj=path.parse(__filename);
+console.log(pathObj);/
 
-//working with os module
+/*working with os module
 
 const os=require('os');
 
@@ -28,5 +31,19 @@ var freeMemory=os.freemem();
 
 
 console.log(`Total memory:${totalMemory}`);
-console.log(`Free memory:${freeMemory}`);
+console.log(`Free memory:${freeMemory}`);*/
+
+
+const fs=require('fs');
+
+
+const files=fs.readdirSync('./')
+
+//console.log(files);
+
+fs.readdir('./',function(err,files){
+    if(err)console.log('Error',err);
+    else console.log('Result',files);
+});
+
 
