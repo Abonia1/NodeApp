@@ -34,7 +34,8 @@ console.log(`Total memory:${totalMemory}`);
 console.log(`Free memory:${freeMemory}`);*/
 
 
-const fs=require('fs');
+/*File syste module
+mconst fs=require('fs');
 
 
 const files=fs.readdirSync('./')
@@ -44,6 +45,22 @@ const files=fs.readdirSync('./')
 fs.readdir('./',function(err,files){
     if(err)console.log('Error',err);
     else console.log('Result',files);
+});*/
+
+
+/*EVENT MODULE*/
+// class eventemitter
+const EventEmitter=require('events');
+//object emitter
+const emitter=new EventEmitter();
+
+//register the listener
+emitter.on('messageLogged',function(){
+    console.log('listener called');
 });
 
+//signaling/raise an event
+emitter.emit('messageLogged');
+
+//listener is a function which is called when the event is raised
 
