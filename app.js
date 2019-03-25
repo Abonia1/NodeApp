@@ -71,7 +71,7 @@ const logger=require('./logger');
 logger('messages');*/
 
 
-/*EXTEND EVENTEMITTER*/
+/*EXTEND EVENTEMITTER
 
 const EventEmitter=require('events');
 
@@ -83,5 +83,24 @@ logger.on('messageLogged',(arg)=>{
     console.log('listener called',arg);
 });
 
-logger.log('message');
+logger.log('message');*/
+
+
+/*HTTP MOODULE*/
+const http=require('http');
+
+const server=http.createServer((req,res)=>{
+    if(req.url==='/'){
+        res.write('Hello');
+        res.end;
+    }
+    if(req.url==='/api/courses'){
+        res.write(JSON.stringify([1,2,3,4]));
+        res.end();
+    }
+});
+
+server.listen(3000);
+
+console.log('server is listeing on port 3000....');
 
